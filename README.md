@@ -1,14 +1,81 @@
 # Cocina Casa Monarca
 
-Desktop app for kitchen inventory and weekly shopping management. Built with Electron and React.
+Aplicación de escritorio para gestión de inventario, menú semanal y compras de cocina. Construida con Electron y React.
 
-## Features
+## Funcionalidades
 
-- Weekly attendance tracking by portion size (chicas, medianas, grandes)
-- Recipe management with per-person ingredient quantities
-- Automatic shopping list based on current inventory and expected demand
-- Inventory management across storage locations (bodega, refrigerador, congelador)
-- Dashboard with low-stock alerts
+- Registro de asistencia por tamaño de porción (chica, mediana, grande)
+- Catálogo de recetas con cantidades por persona
+- Inventario por ubicación (bodega, refrigerador, congelador)
+- Optimización automática del menú y compras semanales mediante MILP
+- Panel de alertas de bajo stock
+
+## Algoritmo de optimización (MILP)
+
+La vista **Compras sugeridas** incluye un optimizador de programación lineal entera mixta (MILP) implementado en `milp_solver.py` con el solver CBC a través de [PuLP](https://coin-or.github.io/pulp/).
+
+### Qué resuelve
+
+Dado el inventario actual y la asistencia registrada, el modelo genera el **menú óptimo de 7 días** (desayuno, comida y cena) y la **lista de compras mínima** para cubrirlo, minimizando el costo total de adquisición.
+
+### Conjuntos
+
+| Símbolo | Descripción |
+|---------|-------------|
+| I | Ingredientes (arroz, pollo, frijoles, …) |
+| K | Días de la semana (d1 … d7) |
+| C | Tiempos de comida (Desayuno, Comida, Cena) |
+| U | Platillos complemento (ArrozCalabacita, AvenaLeche, …) |
+| P | Proteínas (Pollo, Res, Mojarra, Huevo, Jamón, Atún) |
+| J | Ubicaciones de almacén (Ambiente, Refrigerado, Congelado) |
+
+### Función objetivo
+
+Minimizar el costo total de compras:
+
+```
+min  Σ costo[i] · x_store[i][j]   ∀ i ∈ I, j ∈ J
+```
+
+### Variables de decisión principales
+
+| Variable | Descripción |
+|----------|-------------|
+| `x_store[i][j]` | Paquetes a comprar del ingrediente `i` para almacén `j` |
+| `inv[i][j][k]` | Inventario de `i` en ubicación `j` al final del día `k` |
+| `transfer[i][k]` | Gramos transferidos de Congelado → Refrigerado el día `k` |
+| `b_prot[i][k][c]` | Binaria — proteína `i` seleccionada en comida `c` del día `k` |
+| `b_comp[u][k][c]` | Binaria — complemento `u` seleccionado en comida `c` del día `k` |
+
+### Restricciones principales
+
+**Balance de inventario** — el stock de cada día se deriva del anterior más compras/transferencias menos consumo.
+
+**Demanda nutricional** — cada tiempo de comida debe cubrir los gramos requeridos de proteína y complemento según la distribución de porciones (chica 100/52.5 g, mediana 180/92.5 g, grande 250/140 g). Desayuno y cena usan factor 0.5× respecto a comida.
+
+**Selección de menú** — exactamente 1 proteína y 1 complemento por tiempo de comida y día, restringidos a las combinaciones válidas:
+
+```
+Desayuno → proteína: {Huevo, Jamón}         complemento: {FrijolesPapa, AvenaLeche, BolilloFrijol}
+Comida   → proteína: {Pollo, Res, Mojarra}  complemento: {ArrozCalabacita, PapasZanahoria, ArrozJitomate}
+Cena     → proteína: {Atún, Huevo, Jamón}   complemento: {PastaJitomate, PastaCalabacita, FrijolesPapa}
+```
+
+**Variedad** — ningún platillo se repite el mismo día ni en días consecutivos. Res y Mojarra deben aparecer al menos una vez en la semana.
+
+**Capacidad de almacén** — el volumen total (en litros, ajustado por `factor_vol`) no supera la capacidad de refrigerador (550 L) y congelador (750 L) en ningún día.
+
+**Vida útil** — cada ingrediente tiene una vida útil máxima (en días) por ubicación. El modelo usa una ventana deslizante que impide acumular inventario más antiguo que su vida útil en refrigerador, y fuerza a 0 el inventario de ubicaciones donde el ingrediente no puede almacenarse.
+
+**Reserva de emergencia** — al final del día 7 debe quedar al menos el 15% de la demanda semanal total en proteínas y complementos, como colchón ante imprevistos.
+
+### Requisito adicional
+
+El script requiere Python 3 y PuLP:
+
+```bash
+pip install pulp
+```
 
 ## Requirements
 
