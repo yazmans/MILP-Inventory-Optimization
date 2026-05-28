@@ -1,0 +1,5 @@
+node_modules/
+dist/
+casaMonarca.db
+uploads/
+.DS_Store

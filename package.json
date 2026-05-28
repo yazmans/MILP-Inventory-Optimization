@@ -1,0 +1,44 @@
+{
+  "name": "casa-monarca",
+  "version": "1.0.0",
+  "description": "Cocina Casa Monarca — Inventario y compras",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^35.1.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "mx.casamonarca.cocina",
+    "productName": "Cocina Casa Monarca",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!_fig/**",
+      "!uploads/**",
+      "!dist/**",
+      "!.thumbnail",
+      "!*.md"
+    ],
+    "mac": {
+      "category": "public.app-category.business",
+      "icon": "assets/logo-casamonarca.png"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/logo-casamonarca.png"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/logo-casamonarca.png"
+    }
+  },
+  "dependencies": {
+    "sql.js": "^1.14.1"
+  }
+}

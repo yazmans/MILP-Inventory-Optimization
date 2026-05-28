@@ -1,0 +1,1133 @@
+{
+  "source": {
+    "filename": "DreamsPOS – POS & Inventory Management Admin Dashboard (React, Vue, Angular, Laravel) (Community).fig",
+    "nodeCount": 24870,
+    "pages": [
+      {
+        "id": "0:1",
+        "name": "Cover",
+        "selected": true
+      },
+      {
+        "id": "1:133",
+        "name": "Design System",
+        "selected": true
+      },
+      {
+        "id": "5016:28747",
+        "name": "Menu Components",
+        "selected": true
+      },
+      {
+        "id": "6:3037",
+        "name": "Screens",
+        "selected": true
+      }
+    ],
+    "userSelectedFrames": [
+      "/Design-System",
+      "/Design-System/Design-System",
+      "/Menu-Components",
+      "/Menu-Components/Sidebar",
+      "/Menu-Components/Settings-Sidebar",
+      "/Screens",
+      "/Screens/POS-Screens",
+      "/Screens/Peoples",
+      "/Screens/Reports",
+      "/Screens/Stock",
+      "/Screens/Inventory",
+      "/Screens/Dashboards",
+      "/Screens/Preview-Link",
+      "/Screens/Authentication-Screens"
+    ]
+  },
+  "components": [
+    {
+      "name": "Sidebar",
+      "figmaId": "7:13215",
+      "variantProps": [
+        "property1"
+      ],
+      "valueProps": []
+    },
+    {
+      "name": "AvatarCircle",
+      "figmaId": "7:24736",
+      "variantProps": [
+        "property1"
+      ],
+      "valueProps": []
+    },
+    {
+      "name": "AvatarSquare",
+      "figmaId": "7:24773",
+      "variantProps": [
+        "property1"
+      ],
+      "valueProps": []
+    },
+    {
+      "name": "InputWithPlaceholder",
+      "figmaId": "92:6794",
+      "variantProps": [
+        "property1"
+      ],
+      "valueProps": []
+    },
+    {
+      "name": "InputWithSelect",
+      "figmaId": "92:6811",
+      "variantProps": [
+        "property1"
+      ],
+      "valueProps": []
+    },
+    {
+      "name": "InputWithRightIcon",
+      "figmaId": "92:6838",
+      "variantProps": [
+        "property1"
+      ],
+      "valueProps": []
+    },
+    {
+      "name": "InputWithLeftIcon",
+      "figmaId": "92:6859",
+      "variantProps": [
+        "property1"
+      ],
+      "valueProps": []
+    },
+    {
+      "name": "InputWithDate",
+      "figmaId": "92:6880",
+      "variantProps": [
+        "property1"
+      ],
+      "valueProps": []
+    },
+    {
+      "name": "InputWithTime",
+      "figmaId": "92:6901",
+      "variantProps": [
+        "property1"
+      ],
+      "valueProps": []
+    },
+    {
+      "name": "InputMultiSelect",
+      "figmaId": "137:42465",
+      "variantProps": [
+        "property1"
+      ],
+      "valueProps": []
+    },
+    {
+      "name": "InputVariant",
+      "figmaId": "150:63784",
+      "variantProps": [
+        "property1"
+      ],
+      "valueProps": []
+    },
+    {
+      "name": "Description",
+      "figmaId": "150:63959",
+      "variantProps": [],
+      "valueProps": []
+    },
+    {
+      "name": "SettingsSidebar",
+      "figmaId": "300:288647",
+      "variantProps": [
+        "property1"
+      ],
+      "valueProps": []
+    },
+    {
+      "name": "Button2",
+      "figmaId": "395:357355",
+      "variantProps": [
+        "size",
+        "colour",
+        "state",
+        "icon"
+      ],
+      "valueProps": []
+    },
+    {
+      "name": "CraftIconeSvg150px",
+      "figmaId": "1942:364888",
+      "variantProps": [],
+      "valueProps": []
+    },
+    {
+      "name": "IconeHubspotSvg150px",
+      "figmaId": "1942:364905",
+      "variantProps": [],
+      "valueProps": []
+    },
+    {
+      "name": "LottiflowIconeSvg150px",
+      "figmaId": "1942:364921",
+      "variantProps": [],
+      "valueProps": []
+    }
+  ],
+  "tokens": {
+    "count": 169,
+    "modes": [
+      "Light Mode",
+      "Light",
+      "Dark Mode"
+    ]
+  },
+  "styles": {
+    "text": 0,
+    "effect": 0
+  },
+  "warnings": [
+    {
+      "component": "Sidebar",
+      "nodeId": "77:4403",
+      "kind": "external-instance",
+      "detail": "instance of \"layout-grid\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14764",
+      "kind": "external-instance",
+      "detail": "instance of \"chevron-down\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14778",
+      "kind": "external-instance",
+      "detail": "instance of \"user-edit\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14782",
+      "kind": "external-instance",
+      "detail": "instance of \"chevron-right\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13472",
+      "kind": "external-instance",
+      "detail": "instance of \"box\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13479",
+      "kind": "external-instance",
+      "detail": "instance of \"table-plus\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13486",
+      "kind": "external-instance",
+      "detail": "instance of \"progress-alert\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13493",
+      "kind": "external-instance",
+      "detail": "instance of \"trending-up-2\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13500",
+      "kind": "external-instance",
+      "detail": "instance of \"list-details\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "79:30499",
+      "kind": "external-instance",
+      "detail": "instance of \"carousel-vertical\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13507",
+      "kind": "external-instance",
+      "detail": "instance of \"triangles\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13514",
+      "kind": "external-instance",
+      "detail": "instance of \"brand-unity\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13521",
+      "kind": "external-instance",
+      "detail": "instance of \"checklist\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13528",
+      "kind": "external-instance",
+      "detail": "instance of \"certificate\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13535",
+      "kind": "external-instance",
+      "detail": "instance of \"barcode\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13542",
+      "kind": "external-instance",
+      "detail": "instance of \"qrcode\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13646",
+      "kind": "external-instance",
+      "detail": "instance of \"stack-3\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13653",
+      "kind": "external-instance",
+      "detail": "instance of \"stairs-up\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13660",
+      "kind": "external-instance",
+      "detail": "instance of \"stack-pop\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:24976",
+      "kind": "external-instance",
+      "detail": "instance of \"shopping-cart\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:24388",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13571",
+      "kind": "external-instance",
+      "detail": "instance of \"file-invoice\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13578",
+      "kind": "external-instance",
+      "detail": "instance of \"receipt-refund\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13585",
+      "kind": "external-instance",
+      "detail": "instance of \"files\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:25667",
+      "kind": "external-instance",
+      "detail": "instance of \"device-laptop\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:25132",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13603",
+      "kind": "external-instance",
+      "detail": "instance of \"ticket\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:25945",
+      "kind": "external-instance",
+      "detail": "instance of \"cards\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:25816",
+      "kind": "external-instance",
+      "detail": "instance of \"file-percent\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:25820",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13614",
+      "kind": "external-instance",
+      "detail": "instance of \"shopping-bag\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13628",
+      "kind": "external-instance",
+      "detail": "instance of \"file-unknown\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13635",
+      "kind": "external-instance",
+      "detail": "instance of \"file-upload\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13678",
+      "kind": "external-instance",
+      "detail": "instance of \"file-stack\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13682",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:26117",
+      "kind": "external-instance",
+      "detail": "instance of \"file-pencil\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:26121",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14794",
+      "kind": "external-instance",
+      "detail": "instance of \"building-bank\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14801",
+      "kind": "external-instance",
+      "detail": "instance of \"moneybag\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:26302",
+      "kind": "external-instance",
+      "detail": "instance of \"report-money\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:26481",
+      "kind": "external-instance",
+      "detail": "instance of \"alert-circle\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:26627",
+      "kind": "external-instance",
+      "detail": "instance of \"zoom-money\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:26718",
+      "kind": "external-instance",
+      "detail": "instance of \"file-infinity\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:26996",
+      "kind": "external-instance",
+      "detail": "instance of \"users-group\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:27042",
+      "kind": "external-instance",
+      "detail": "instance of \"user-up\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13710",
+      "kind": "external-instance",
+      "detail": "instance of \"user-dollar\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13717",
+      "kind": "external-instance",
+      "detail": "instance of \"home-bolt\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13724",
+      "kind": "external-instance",
+      "detail": "instance of \"archive\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13735",
+      "kind": "external-instance",
+      "detail": "instance of \"user\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13742",
+      "kind": "external-instance",
+      "detail": "instance of \"compass\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13749",
+      "kind": "external-instance",
+      "detail": "instance of \"git-merge\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13756",
+      "kind": "external-instance",
+      "detail": "instance of \"arrows-shuffle\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13763",
+      "kind": "external-instance",
+      "detail": "instance of \"user-cog\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13767",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:27914",
+      "kind": "external-instance",
+      "detail": "instance of \"calendar\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:27918",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13780",
+      "kind": "external-instance",
+      "detail": "instance of \"calendar-share\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13787",
+      "kind": "external-instance",
+      "detail": "instance of \"file-dollar\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13791",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:30103",
+      "kind": "external-instance",
+      "detail": "instance of \"chart-bar\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:28374",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13805",
+      "kind": "external-instance",
+      "detail": "instance of \"chart-pie-2\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:30911",
+      "kind": "external-instance",
+      "detail": "instance of \"triangle-inverted\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:30366",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13819",
+      "kind": "external-instance",
+      "detail": "instance of \"businessplan\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:31827",
+      "kind": "external-instance",
+      "detail": "instance of \"user-star\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:31175",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:32389",
+      "kind": "external-instance",
+      "detail": "instance of \"report\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:32100",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:32403",
+      "kind": "external-instance",
+      "detail": "instance of \"report-analytics\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:32407",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13847",
+      "kind": "external-instance",
+      "detail": "instance of \"file-vector\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13854",
+      "kind": "external-instance",
+      "detail": "instance of \"chart-ppf\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "80:31569",
+      "kind": "external-instance",
+      "detail": "instance of \"chart-dots-2\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13868",
+      "kind": "external-instance",
+      "detail": "instance of \"chart-donut\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:33020",
+      "kind": "external-instance",
+      "detail": "instance of \"report-search\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13886",
+      "kind": "external-instance",
+      "detail": "instance of \"shield-up\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "76:33645",
+      "kind": "external-instance",
+      "detail": "instance of \"jump-rope\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13893",
+      "kind": "external-instance",
+      "detail": "instance of \"trash-x\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13915",
+      "kind": "external-instance",
+      "detail": "instance of \"page-break\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13922",
+      "kind": "external-instance",
+      "detail": "instance of \"wallpaper\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13926",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13929",
+      "kind": "external-instance",
+      "detail": "instance of \"map-pin\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13933",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13936",
+      "kind": "external-instance",
+      "detail": "instance of \"star\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13943",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=16, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13980",
+      "kind": "external-instance",
+      "detail": "instance of \"user-circle\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13987",
+      "kind": "external-instance",
+      "detail": "instance of \"shield\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13991",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13994",
+      "kind": "external-instance",
+      "detail": "instance of \"file-x\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13998",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "79:62205",
+      "kind": "external-instance",
+      "detail": "instance of \"file\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14008",
+      "kind": "external-instance",
+      "detail": "instance of \"currency-dollar\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14015",
+      "kind": "external-instance",
+      "detail": "instance of \"send\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14022",
+      "kind": "external-instance",
+      "detail": "instance of \"alert-triangle\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14118",
+      "kind": "external-instance",
+      "detail": "instance of \"settings\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14122",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14125",
+      "kind": "external-instance",
+      "detail": "instance of \"world\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14129",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14132",
+      "kind": "external-instance",
+      "detail": "instance of \"device-mobile\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14136",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14139",
+      "kind": "external-instance",
+      "detail": "instance of \"device-desktop\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14143",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14146",
+      "kind": "external-instance",
+      "detail": "instance of \"settings-dollar\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14150",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14153",
+      "kind": "external-instance",
+      "detail": "instance of \"settings-2\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14157",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:14160",
+      "kind": "external-instance",
+      "detail": "instance of \"logout\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Sidebar",
+      "nodeId": "7:13215",
+      "kind": "variant-root-only",
+      "detail": "variant deltas capture root-level styles only; nested-child differences not diffed"
+    },
+    {
+      "component": "AvatarCircle",
+      "nodeId": "7:24736",
+      "kind": "variant-root-only",
+      "detail": "variant deltas capture root-level styles only; nested-child differences not diffed"
+    },
+    {
+      "component": "AvatarSquare",
+      "nodeId": "7:24773",
+      "kind": "variant-root-only",
+      "detail": "variant deltas capture root-level styles only; nested-child differences not diffed"
+    },
+    {
+      "component": "InputWithPlaceholder",
+      "nodeId": "92:6794",
+      "kind": "variant-root-only",
+      "detail": "variant deltas capture root-level styles only; nested-child differences not diffed"
+    },
+    {
+      "component": "InputWithSelect",
+      "nodeId": "93:6161",
+      "kind": "external-instance",
+      "detail": "instance of \"chevron-down\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "InputWithSelect",
+      "nodeId": "92:6811",
+      "kind": "variant-root-only",
+      "detail": "variant deltas capture root-level styles only; nested-child differences not diffed"
+    },
+    {
+      "component": "InputWithRightIcon",
+      "nodeId": "92:6858",
+      "kind": "external-instance",
+      "detail": "instance of \"user\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "InputWithRightIcon",
+      "nodeId": "92:6838",
+      "kind": "variant-root-only",
+      "detail": "variant deltas capture root-level styles only; nested-child differences not diffed"
+    },
+    {
+      "component": "InputWithLeftIcon",
+      "nodeId": "93:6178",
+      "kind": "external-instance",
+      "detail": "instance of \"user\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "InputWithLeftIcon",
+      "nodeId": "92:6859",
+      "kind": "variant-root-only",
+      "detail": "variant deltas capture root-level styles only; nested-child differences not diffed"
+    },
+    {
+      "component": "InputWithDate",
+      "nodeId": "93:6190",
+      "kind": "external-instance",
+      "detail": "instance of \"calendar\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "InputWithDate",
+      "nodeId": "92:6880",
+      "kind": "variant-root-only",
+      "detail": "variant deltas capture root-level styles only; nested-child differences not diffed"
+    },
+    {
+      "component": "InputWithTime",
+      "nodeId": "93:6200",
+      "kind": "external-instance",
+      "detail": "instance of \"clock-hour-3\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "InputWithTime",
+      "nodeId": "92:6901",
+      "kind": "variant-root-only",
+      "detail": "variant deltas capture root-level styles only; nested-child differences not diffed"
+    },
+    {
+      "component": "InputMultiSelect",
+      "nodeId": "137:42465",
+      "kind": "variant-root-only",
+      "detail": "variant deltas capture root-level styles only; nested-child differences not diffed"
+    },
+    {
+      "component": "InputVariant",
+      "nodeId": "150:63351",
+      "kind": "external-instance",
+      "detail": "instance of \"circle-plus\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "InputVariant",
+      "nodeId": "150:63356",
+      "kind": "external-instance",
+      "detail": "instance of \"chevron-down\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "InputVariant",
+      "nodeId": "150:63784",
+      "kind": "variant-root-only",
+      "detail": "variant deltas capture root-level styles only; nested-child differences not diffed"
+    },
+    {
+      "component": "Description",
+      "nodeId": "150:63883",
+      "kind": "external-instance",
+      "detail": "instance of \"_WYSIWYG-toolbar-button\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Description",
+      "nodeId": "150:63884",
+      "kind": "external-instance",
+      "detail": "instance of \"_WYSIWYG-toolbar-button\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Description",
+      "nodeId": "150:63885",
+      "kind": "external-instance",
+      "detail": "instance of \"_WYSIWYG-toolbar-button\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Description",
+      "nodeId": "150:63886",
+      "kind": "external-instance",
+      "detail": "instance of \"_WYSIWYG-toolbar-button\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Description",
+      "nodeId": "150:63887",
+      "kind": "external-instance",
+      "detail": "instance of \"_WYSIWYG-toolbar-button\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Description",
+      "nodeId": "150:63888",
+      "kind": "external-instance",
+      "detail": "instance of \"_WYSIWYG-toolbar-button\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Description",
+      "nodeId": "150:63889",
+      "kind": "external-instance",
+      "detail": "instance of \"_WYSIWYG-toolbar-button\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Description",
+      "nodeId": "150:63890",
+      "kind": "external-instance",
+      "detail": "instance of \"_WYSIWYG-toolbar-button\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Description",
+      "nodeId": "150:63891",
+      "kind": "external-instance",
+      "detail": "instance of \"_WYSIWYG-toolbar-button\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Description",
+      "nodeId": "150:63897",
+      "kind": "external-instance",
+      "detail": "instance of \"_WYSIWYG-toolbar-button\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Description",
+      "nodeId": "150:63898",
+      "kind": "external-instance",
+      "detail": "instance of \"_WYSIWYG-toolbar-button\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Description",
+      "nodeId": "150:63899",
+      "kind": "external-instance",
+      "detail": "instance of \"_WYSIWYG-toolbar-button\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Description",
+      "nodeId": "439:459030",
+      "kind": "external-instance",
+      "detail": "instance of \"icons / bx-paper-plane\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Description",
+      "nodeId": "439:459033",
+      "kind": "external-instance",
+      "detail": "instance of \"vuesax/linear/arrow-down\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "SettingsSidebar",
+      "nodeId": "300:288622",
+      "kind": "external-instance",
+      "detail": "instance of \"settings\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "SettingsSidebar",
+      "nodeId": "300:288626",
+      "kind": "external-instance",
+      "detail": "instance of \"chevron-up\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "SettingsSidebar",
+      "nodeId": "300:284811",
+      "kind": "external-instance",
+      "detail": "instance of \"world\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "SettingsSidebar",
+      "nodeId": "300:284815",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "SettingsSidebar",
+      "nodeId": "300:284818",
+      "kind": "external-instance",
+      "detail": "instance of \"device-mobile\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "SettingsSidebar",
+      "nodeId": "300:284822",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "SettingsSidebar",
+      "nodeId": "300:284825",
+      "kind": "external-instance",
+      "detail": "instance of \"device-desktop\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "SettingsSidebar",
+      "nodeId": "300:284829",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "SettingsSidebar",
+      "nodeId": "300:284832",
+      "kind": "external-instance",
+      "detail": "instance of \"settings-dollar\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "SettingsSidebar",
+      "nodeId": "300:284836",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "SettingsSidebar",
+      "nodeId": "300:284839",
+      "kind": "external-instance",
+      "detail": "instance of \"settings-2\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "SettingsSidebar",
+      "nodeId": "300:284843",
+      "kind": "external-instance",
+      "detail": "instance of \"Size=12, Weight=Regular\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "SettingsSidebar",
+      "nodeId": "300:288647",
+      "kind": "variant-root-only",
+      "detail": "variant deltas capture root-level styles only; nested-child differences not diffed"
+    },
+    {
+      "component": "Button2",
+      "nodeId": "395:357439",
+      "kind": "external-instance",
+      "detail": "instance of \"chevron-right\" stubbed (not in file/selection)"
+    },
+    {
+      "component": "Button2",
+      "nodeId": "395:357355",
+      "kind": "variant-cap",
+      "detail": "385 of 450 variants beyond the 64-entry cap"
+    },
+    {
+      "component": "Button2",
+      "nodeId": "395:357355",
+      "kind": "variant-root-only",
+      "detail": "variant deltas capture root-level styles only; nested-child differences not diffed"
+    },
+    {
+      "component": "IconeHubspotSvg150px",
+      "nodeId": "1942:364907",
+      "kind": "external-instance",
+      "detail": "instance of \"simple-icons:hubspot\" stubbed (not in file/selection)"
+    }
+  ]
+}
