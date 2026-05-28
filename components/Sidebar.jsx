@@ -59,13 +59,13 @@ const Sidebar = ({ current, onNavigate, recipeCount, lowStockCount, shoppingCoun
         </div>
       </div>
 
-      <div className="cm-sidebar-foot">
+      {/* <div className="cm-sidebar-foot">
         <div className="av">LR</div>
         <div>
           <div style={{ color: "#fff", fontWeight: 600 }}>Lupita Robles</div>
           <div>Coordinadora cocina</div>
         </div>
-      </div>
+      </div> */}
     </aside>
   );
 };

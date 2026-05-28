@@ -1,8 +1,9 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
-const http = require('http');
-const fs   = require('fs');
-const path = require('path');
-const net  = require('net');
+const http   = require('http');
+const fs     = require('fs');
+const path   = require('path');
+const net    = require('net');
+const { spawn } = require('child_process');
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -176,10 +177,10 @@ function registerIPC() {
     }
   });
 
-  // Add a new person
+  // Add a new person — automatically checked in
   ipcMain.handle('db:add-person', (e, person) => {
     db.run(
-      `INSERT INTO people (name, age, portion_type) VALUES (?, ?, ?)`,
+      `INSERT INTO people (name, age, portion_type, arrival, departure) VALUES (?, ?, ?, CURRENT_TIMESTAMP, NULL)`,
       [person.name, person.age, person.portion_type]
     );
     const id = lastId();
@@ -206,6 +207,30 @@ function registerIPC() {
   ipcMain.handle('db:delete-person', (e, id) => {
     db.run(`DELETE FROM people WHERE id = ?`, [id]);
     saveDB();
+  });
+
+  // Run MILP optimizer
+  ipcMain.handle('milp:run', (e, payload) => {
+    return new Promise((resolve) => {
+      const script = path.join(__dirname, 'milp_solver.py');
+      const child  = spawn('python3', [script]);
+      let stdout = '';
+      let stderr = '';
+      child.stdout.on('data', d => { stdout += d; });
+      child.stderr.on('data', d => { stderr += d; });
+      child.on('close', code => {
+        try {
+          resolve(JSON.parse(stdout));
+        } catch (_) {
+          resolve({ ok: false, error: stderr || `El proceso terminó con código ${code}` });
+        }
+      });
+      child.on('error', err => {
+        resolve({ ok: false, error: `No se pudo iniciar Python: ${err.message}` });
+      });
+      child.stdin.write(JSON.stringify(payload));
+      child.stdin.end();
+    });
   });
 }
 

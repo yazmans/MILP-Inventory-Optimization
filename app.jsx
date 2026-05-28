@@ -13,8 +13,21 @@ const App = () => {
   const [recipes, setRecipes]     = useState(window.INITIAL_RECIPES);
   const [inventory, setInventory] = useState(window.INITIAL_INVENTORY);
   const [people, setPeople]       = useState([]);
-  const [dbReady, setDbReady]     = useState(false);
-  const [toast, setToast]         = useState(null);
+  const [dbReady, setDbReady]         = useState(false);
+  const [splashVisible, setSplashVisible] = useState(true);
+  const [toast, setToast]             = useState(null);
+
+  useEffect(() => {
+    // Remove the static HTML splash once React has mounted
+    const el = document.getElementById("cm-splash-static");
+    if (el) el.remove();
+  }, []);
+
+  useEffect(() => {
+    if (!dbReady) return;
+    const t = setTimeout(() => setSplashVisible(false), 450);
+    return () => clearTimeout(t);
+  }, [dbReady]);
 
   // Attendance is derived — people who have arrived and not yet departed
   const appliedAttendance = useMemo(() => {
@@ -78,7 +91,7 @@ const App = () => {
   const handleAddPerson = useCallback(async (person) => {
     const result = await window.electronAPI?.dbAddPerson(person);
     const newId = result?.id ?? Date.now();
-    setPeople(prev => [...prev, { ...person, id: newId, arrival: null, departure: null }]);
+    setPeople(prev => [...prev, { ...person, id: newId, arrival: new Date().toISOString(), departure: null }]);
     onToast(`${person.name} agregada/o`);
   }, [onToast]);
 
@@ -105,6 +118,15 @@ const App = () => {
   const t = TITLES[tab];
 
   return (
+    <>
+      {splashVisible && (
+        <div className={`cm-splash${dbReady ? " cm-splash--hidden" : ""}`}>
+          <img className="cm-splash__logo" src="assets/logo-casamonarca.png" alt="Casa Monarca" />
+          <div className="cm-splash__title">Cocina <em>Casa Monarca</em></div>
+          <div className="cm-splash__bar"></div>
+          <div className="cm-splash__sub">Cargando datos…</div>
+        </div>
+      )}
     <div className="cm-app">
       <Sidebar
         current={tab}
@@ -198,6 +220,7 @@ const App = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

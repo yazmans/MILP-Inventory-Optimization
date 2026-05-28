@@ -5,8 +5,47 @@ const PurchasesView = ({ recipes, inventory, attendance, recomputeKey }) => {
     () => window.CM.computeShoppingList(recipes, inventory, attendance),
     [recipes, inventory, attendance]
   );
-  const [expanded, setExpanded] = useState(null);
+  const [expanded, setExpanded]   = useState(null);
   const [recomputing, setRecomputing] = useState(false);
+  const [milpRunning, setMilpRunning] = useState(false);
+  const [milpError,   setMilpError]   = useState(null);
+  const [milpResult,  setMilpResult]  = useState(() => {
+    try { return JSON.parse(localStorage.getItem("cm:milpResult")) || null; }
+    catch { return null; }
+  });
+
+  const handleRunMilp = async () => {
+    setMilpRunning(true);
+    setMilpError(null);
+    setMilpResult(null);
+
+    const payload = {
+      personas_talla: {
+        Pequena: attendance.chicas   || 0,
+        Mediana: attendance.medianas || 0,
+        Grande:  attendance.grandes  || 0,
+      },
+      inventario: inventory.map(item => ({
+        slug: item.id,
+        qty:  item.qty,
+        unit: item.unit,
+      })),
+    };
+
+    try {
+      const res = await window.electronAPI.milpRun(payload);
+      if (res.ok) {
+        localStorage.setItem("cm:milpResult", JSON.stringify(res));
+        setMilpResult(res);
+      } else {
+        setMilpError(res.error || "Error desconocido");
+      }
+    } catch (e) {
+      setMilpError(e.message);
+    } finally {
+      setMilpRunning(false);
+    }
+  };
 
   const firstRender = useRef(true);
   useEffect(() => {
@@ -16,9 +55,10 @@ const PurchasesView = ({ recipes, inventory, attendance, recomputeKey }) => {
     return () => clearTimeout(t);
   }, [recomputeKey]);
 
-  const toBuy = list.filter((l) => l.status === "comprar");
-  const tight = list.filter((l) => l.status === "ajustado");
-  const ok    = list.filter((l) => l.status === "suficiente");
+  const visible = list.filter((r) => r.stock > 0 || r.needed > 0);
+  const toBuy = visible.filter((l) => l.status === "comprar");
+  const tight = visible.filter((l) => l.status === "ajustado");
+  const ok    = visible.filter((l) => l.status === "suficiente");
 
   const totalCost = toBuy.reduce((s, r) => s + r.suggested * (pricePer[r.id] || 0), 0);
 
@@ -61,99 +101,121 @@ const PurchasesView = ({ recipes, inventory, attendance, recomputeKey }) => {
         </div>
       </div>
 
-      <div className="cm-card flush">
-        <div style={{ padding: "20px 22px 0" }}>
+      {/* ── Sección MILP ───────────────────────────────────────────────── */}
+      <div className="cm-card flush" style={{ marginTop: 16 }}>
+        <div style={{ padding: "20px 22px" }}>
           <div className="cm-card-head">
             <div>
-              <div className="cm-eyebrow">Lista sugerida — semana 22</div>
-              <h2 style={{ marginTop: 6 }}>Materia prima para reabastecer</h2>
+              <div className="cm-eyebrow">Optimización MILP · CBC Solver</div>
+              <h2 style={{ marginTop: 6 }}>Plan semanal óptimo</h2>
               <p className="desc">
-                Cruce entre asistencia, recetas activas e inventario actual.
-                Haz clic en cualquier fila para ver el desglose por receta.
+                Genera el menú de 7 días (desayuno, comida y cena) minimizando el costo total
+                de compras, respetando variedad, caducidad y capacidad de almacén.
               </p>
             </div>
-            <div className="row gap-8">
-              <button className="cm-btn ghost"><Icon name="calendar" size={14} /> Posponer</button>
-              <button className="cm-btn primary"><Icon name="check" size={14} /> Enviar a proveedores</button>
-            </div>
+            {window.electronAPI && (
+              <button
+                className="cm-btn primary"
+                onClick={handleRunMilp}
+                disabled={milpRunning}
+                style={{ whiteSpace: "nowrap" }}
+              >
+                {milpRunning
+                  ? <><span className="cm-spinner" />Calculando…</>
+                  : <><Icon name="check" size={14} /> Optimizar semana</>
+                }
+              </button>
+            )}
           </div>
         </div>
 
-        <table className="cm-table">
-          <thead>
-            <tr>
-              <th style={{ width: "28%" }}>Insumo</th>
-              <th className="right" style={{ width: "14%" }}>Requerido</th>
-              <th className="right" style={{ width: "14%" }}>En inventario</th>
-              <th className="right" style={{ width: "18%" }}>Cantidad sugerida</th>
-              <th style={{ width: "10%" }}>Unidad</th>
-              <th style={{ width: "12%" }}>Estado</th>
-              <th style={{ width: "4%" }}></th>
-            </tr>
-          </thead>
-          <tbody>
-            {list.map((row) => {
-              const open = expanded === row.id;
-              return (
-                <React.Fragment key={row.id}>
-                  <tr
-                    className={recomputing ? "cm-recomputing" : ""}
-                    style={{ cursor: "pointer" }}
-                    onClick={() => setExpanded(open ? null : row.id)}
-                  >
-                    <td>
-                      <div style={{ fontWeight: 600 }}>{row.name}</div>
-                      <div className="muted" style={{ fontSize: 11.5, marginTop: 2 }}>
-                        usado en {row.byRecipe.length} receta{row.byRecipe.length === 1 ? "" : "s"}
-                      </div>
-                    </td>
-                    <td className="right num">{window.CM.fmtQty(row.needed, row.unit)}</td>
-                    <td className="right num muted">{window.CM.fmtQty(row.stock, row.unit)}</td>
-                    <td className="right">
-                      <div style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 17,
-                        fontWeight: 600,
-                        color: row.status === "comprar" ? "var(--cm-magenta-deep)" : row.status === "ajustado" ? "var(--cm-warn)" : "var(--cm-ink-faint)",
-                      }}>
-                        {row.suggested > 0 ? window.CM.fmtQty(row.suggested, row.unit) : "—"}
-                      </div>
-                    </td>
-                    <td className="num muted">{row.unit}</td>
-                    <td>
-                      {row.status === "comprar" && <span className="cm-tag magenta"><span className="dot"></span>Comprar</span>}
-                      {row.status === "ajustado" && <span className="cm-tag warn"><span className="dot"></span>Ajustado</span>}
-                      {row.status === "suficiente" && <span className="cm-tag success"><span className="dot"></span>Cubierto</span>}
-                    </td>
-                    <td className="right muted">
-                      <Icon name={open ? "chev-down" : "chev-right"} size={14} />
-                    </td>
-                  </tr>
-                  {open && (
-                    <tr className="cm-row-expand">
-                      <td colSpan={7}>
-                        <div className="panel">
-                          <div className="mini">
-                            <div className="l">Desglose por receta</div>
-                            <div className="q muted" style={{ fontSize: 12, fontWeight: 400 }}>
-                              cuánto consume cada platillo
-                            </div>
-                          </div>
-                          {row.byRecipe.map((br) => (
-                            <div className="mini" key={br.recipeId}>
-                              <div className="l">{br.recipeName}</div>
-                              <div className="q">{window.CM.fmtQty(br.qty, row.unit)} <span className="muted" style={{ fontWeight: 400 }}>{row.unit}</span></div>
-                            </div>
-                          ))}
+        {milpError && (
+          <div className="cm-milp-error">{milpError}</div>
+        )}
+
+        {milpResult && (
+          <>
+            <div className="cm-milp-stats">
+              <div className="m">
+                <div className="v">${milpResult.costo.toLocaleString("es-MX", { minimumFractionDigits: 2 })}</div>
+                <div className="k">costo total MXN</div>
+              </div>
+              <div className="m">
+                <div className="v">{milpResult.compras.length}</div>
+                <div className="k">productos a comprar</div>
+              </div>
+              {/* <div className="m">
+                <div className="v">{milpResult.tiempo}s</div>
+                <div className="k">tiempo de cómputo</div>
+              </div> */}
+              <div className="m" style={{ marginLeft: "auto" }}>
+                <div className="v" style={{ color: "var(--cm-success)", fontSize: 13 }}>{milpResult.status}</div>
+                <div className="k">estado del solver</div>
+              </div>
+            </div>
+
+            {/* Menú semanal */}
+            <div style={{ padding: "16px 22px 4px" }}>
+              <div className="cm-eyebrow">Menú generado</div>
+            </div>
+            <table className="cm-table cm-menu-table" style={{ width: "100%" }}>
+              <thead>
+                <tr>
+                  <th style={{ width: "12%" }}>Día</th>
+                  <th style={{ width: "29%" }}>Desayuno</th>
+                  <th style={{ width: "29%" }}>Comida</th>
+                  <th style={{ width: "30%" }}>Cena</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.entries(milpResult.menu).map(([key, day]) => (
+                  <tr key={key}>
+                    <td>{day.dia}</td>
+                    {["Desayuno", "Comida", "Cena"].map(c => (
+                      <td key={c}>
+                        <div className="cm-menu-cell">
+                          <span className="prot">{day[c].proteina}</span>
+                          <span className="comp">{day[c].complemento}</span>
                         </div>
                       </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            {/* Lista de compras MILP */}
+            {milpResult.compras.length > 0 && (
+              <>
+                <div style={{ padding: "16px 22px 4px" }}>
+                  <div className="cm-eyebrow">Compras sugeridas por el modelo</div>
+                </div>
+                <table className="cm-table" style={{ width: "100%" }}>
+                  <thead>
+                    <tr>
+                      <th style={{ width: "28%" }}>Ingrediente</th>
+                      <th className="right" style={{ width: "14%" }}>Paquetes</th>
+                      <th className="right" style={{ width: "16%" }}>Total (g)</th>
+                      <th style={{ width: "18%" }}>Ubicación</th>
+                      <th className="right" style={{ width: "16%" }}>Costo MXN</th>
                     </tr>
-                  )}
-                </React.Fragment>
-              );
-            })}
-          </tbody>
-        </table>
+                  </thead>
+                  <tbody>
+                    {milpResult.compras.map((c, i) => (
+                      <tr key={i}>
+                        <td style={{ fontWeight: 600 }}>{c.ingrediente}</td>
+                        <td className="right num">{c.paquetes}</td>
+                        <td className="right num muted">{c.gramos.toLocaleString()}</td>
+                        <td className="muted">{c.ubicacion}</td>
+                        <td className="right num">${c.costo.toLocaleString("es-MX", { minimumFractionDigits: 2 })}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </>
+            )}
+          </>
+        )}
       </div>
     </div>
   );

@@ -111,12 +111,10 @@ const InventoryView = ({ inventory, setInventory, recipes, attendance, onToast }
         <table className="cm-table">
           <thead>
             <tr>
-              <th style={{ width: "26%" }}>Insumo</th>
-              <th style={{ width: "16%" }} className="right">Disponible</th>
-              <th style={{ width: "10%" }}>Unidad</th>
-              <th style={{ width: "18%" }}>Ubicación</th>
-              <th style={{ width: "20%" }}>Cobertura semanal</th>
-              <th style={{ width: "10%" }}>Estado</th>
+              <th style={{ width: "40%" }}>Insumo</th>
+              <th style={{ width: "20%" }} className="right">Disponible</th>
+              <th style={{ width: "16%" }}>Unidad</th>
+              <th style={{ width: "24%" }}>Ubicación</th>
             </tr>
           </thead>
           <tbody>
@@ -126,11 +124,6 @@ const InventoryView = ({ inventory, setInventory, recipes, attendance, onToast }
                 <tr key={row.id}>
                   <td>
                     <div style={{ fontWeight: 600 }}>{row.name}</div>
-                    <div className="muted mono" style={{ fontSize: 11.5, marginTop: 2 }}>
-                      {demand[row.id]
-                        ? <>requiere {window.CM.fmtQty(demand[row.id].needed, row.unit)} {row.unit} esta semana</>
-                        : "sin uso en menú actual"}
-                    </div>
                   </td>
                   <td className="right">
                     <input
@@ -155,21 +148,6 @@ const InventoryView = ({ inventory, setInventory, recipes, attendance, onToast }
                         <option key={l} value={l}>{l.charAt(0).toUpperCase() + l.slice(1)}</option>
                       ))}
                     </select>
-                  </td>
-                  <td>
-                    <div className={"cm-stock-bar " + s.kind}>
-                      <div className="fill" style={{ width: s.pct + "%" }} />
-                    </div>
-                    <div className="muted mono" style={{ fontSize: 11.5, marginTop: 4 }}>
-                      {demand[row.id]
-                        ? `${Math.round((row.qty / demand[row.id].needed) * 100)}% de la demanda`
-                        : "—"}
-                    </div>
-                  </td>
-                  <td>
-                    {s.kind === "low" && <span className="cm-tag danger"><span className="dot"></span>Comprar</span>}
-                    {s.kind === "tight" && <span className="cm-tag warn"><span className="dot"></span>Ajustado</span>}
-                    {s.kind === "ok" && <span className="cm-tag success"><span className="dot"></span>Cubierto</span>}
                   </td>
                 </tr>
               );
