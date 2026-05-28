@@ -72,6 +72,11 @@ function ensureSchema() {
   safe(`ALTER TABLE recipes     ADD COLUMN note     TEXT DEFAULT ''`);
   safe(`ALTER TABLE people      ADD COLUMN arrival   DATETIME`);
   safe(`ALTER TABLE people      ADD COLUMN departure DATETIME`);
+  safe(`CREATE TABLE IF NOT EXISTS milp_result (
+    id           INTEGER PRIMARY KEY,
+    data         TEXT NOT NULL,
+    generated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  )`);
 }
 
 async function initDB() {
@@ -207,6 +212,20 @@ function registerIPC() {
   ipcMain.handle('db:delete-person', (e, id) => {
     db.run(`DELETE FROM people WHERE id = ?`, [id]);
     saveDB();
+  });
+
+  // Save MILP result
+  ipcMain.handle('milp:save', (e, data) => {
+    db.run(`INSERT OR REPLACE INTO milp_result (id, data, generated_at) VALUES (1, ?, CURRENT_TIMESTAMP)`,
+      [JSON.stringify(data)]);
+    saveDB();
+  });
+
+  // Load last MILP result
+  ipcMain.handle('milp:load', () => {
+    const row = queryOne(`SELECT data FROM milp_result WHERE id = 1`);
+    if (!row) return null;
+    try { return JSON.parse(row.data); } catch { return null; }
   });
 
   // Run MILP optimizer

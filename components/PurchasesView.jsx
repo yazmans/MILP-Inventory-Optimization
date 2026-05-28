@@ -9,10 +9,11 @@ const PurchasesView = ({ recipes, inventory, attendance, recomputeKey }) => {
   const [recomputing, setRecomputing] = useState(false);
   const [milpRunning, setMilpRunning] = useState(false);
   const [milpError,   setMilpError]   = useState(null);
-  const [milpResult,  setMilpResult]  = useState(() => {
-    try { return JSON.parse(localStorage.getItem("cm:milpResult")) || null; }
-    catch { return null; }
-  });
+  const [milpResult,  setMilpResult]  = useState(null);
+
+  useEffect(() => {
+    window.electronAPI?.milpLoad().then(data => { if (data) setMilpResult(data); });
+  }, []);
 
   const handleRunMilp = async () => {
     setMilpRunning(true);
@@ -35,7 +36,7 @@ const PurchasesView = ({ recipes, inventory, attendance, recomputeKey }) => {
     try {
       const res = await window.electronAPI.milpRun(payload);
       if (res.ok) {
-        localStorage.setItem("cm:milpResult", JSON.stringify(res));
+        await window.electronAPI?.milpSave(res);
         setMilpResult(res);
       } else {
         setMilpError(res.error || "Error desconocido");

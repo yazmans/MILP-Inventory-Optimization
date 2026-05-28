@@ -8,4 +8,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
   dbCheckout:     (id)         => ipcRenderer.invoke('db:checkout', id),
   dbDeletePerson: (id)         => ipcRenderer.invoke('db:delete-person', id),
   milpRun:        (payload)    => ipcRenderer.invoke('milp:run', payload),
+  milpSave:       (data)       => ipcRenderer.invoke('milp:save', data),
+  milpLoad:       ()           => ipcRenderer.invoke('milp:load'),
 });
