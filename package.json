@@ -1,7 +1,7 @@
 {
   "name": "casa-monarca",
   "version": "1.0.0",
-  "description": "Cocina Casa Monarca — Inventario y compras",
+  "description": "Cocina humanitaria — Inventario y compras",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -13,7 +13,7 @@
   },
   "build": {
     "appId": "mx.casamonarca.cocina",
-    "productName": "Cocina Casa Monarca",
+    "productName": "Cocina humanitaria",
     "directories": {
       "output": "dist"
     },

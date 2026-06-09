@@ -160,7 +160,7 @@ const AttendanceView = ({ people, attendance, onCheckin, onCheckout, onAddPerson
           <div className="cm-att-summary" style={{ flex: 1 }}>
             <div className="stat">
               <div className="v">{total} <small>presentes</small></div>
-              <div className="k">Total en Casa Monarca ahora</div>
+              <div className="k">Total en Cocina humanitaria ahora</div>
             </div>
             <div className="stat">
               <div className="v">{attendance.chicas} <small className={"cm-tag chicas"} style={{ fontSize: 11 }}>Chicas</small></div>

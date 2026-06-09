@@ -12,11 +12,11 @@ const Sidebar = ({ current, onNavigate, recipeCount, lowStockCount, shoppingCoun
     <aside className="cm-sidebar">
       <div className="cm-brand">
         <div className="cm-brand-mark">
-          <img src="assets/logo-casamonarca.png" alt="Casa Monarca" />
+          <img src="assets/logo-casamonarca.png" alt="Cocina humanitaria" />
         </div>
         <div className="cm-brand-name">
           Cocina
-          <em>Casa Monarca</em>
+          <em>Cocina humanitaria</em>
         </div>
       </div>
 

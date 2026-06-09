@@ -1,7 +1,7 @@
 var { useState, useEffect, useMemo, useCallback } = React;
 
 const TITLES = {
-  dashboard:  { eyebrow: "Inicio",        title: "Panel de cocina — Casa Monarca",              subtitle: "Resumen de la semana, lista de compras y asistencia." },
+  dashboard:  { eyebrow: "Inicio",        title: "Panel de cocina — Cocina humanitaria",              subtitle: "Resumen de la semana, lista de compras y asistencia." },
   recipes:    { eyebrow: "Sección 1 / 4", title: "Registro de recetas y materia prima",         subtitle: "Da de alta los platillos del menú y desglosa sus ingredientes por porción mediana." },
   inventory:  { eyebrow: "Sección 2 / 4", title: "Control de inventario",                       subtitle: "Stock actual de la cocina y la bodega, organizado por ubicación." },
   attendance: { eyebrow: "Sección 3 / 4", title: "Registro de asistencia",                      subtitle: "Personas presentes hoy, desglosadas por tamaño de porción." },
@@ -121,8 +121,8 @@ const App = () => {
     <>
       {splashVisible && (
         <div className={`cm-splash${dbReady ? " cm-splash--hidden" : ""}`}>
-          <img className="cm-splash__logo" src="assets/logo-casamonarca.png" alt="Casa Monarca" />
-          <div className="cm-splash__title">Cocina <em>Casa Monarca</em></div>
+          <img className="cm-splash__logo" src="assets/logo-casamonarca.png" alt="Cocina humanitaria" />
+          <div className="cm-splash__title"><em>Cocina humanitaria</em></div>
           <div className="cm-splash__bar"></div>
           <div className="cm-splash__sub">Cargando datos…</div>
         </div>

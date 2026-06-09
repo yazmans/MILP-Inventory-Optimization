@@ -284,7 +284,7 @@ async function createWindow() {
       height: 820,
       minWidth: 1024,
       minHeight: 640,
-      title: 'Cocina Casa Monarca',
+      title: 'Cocina humanitaria',
       webPreferences: {
         nodeIntegration: false,
         contextIsolation: true,
