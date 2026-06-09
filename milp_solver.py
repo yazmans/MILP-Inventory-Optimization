@@ -5,7 +5,7 @@ import time
 try:
     import pulp
 except ImportError:
-    print(json.dumps({"ok": False, "error": "PuLP no está instalado. Ejecuta: pip install pulp"}))
+    print(json.dumps({"ok": False, "error": "PuLP no está instalado en este Python. Ejecuta: " + sys.executable + " -m pip install pulp"}))
     sys.exit(0)
 
 start_time = time.time()

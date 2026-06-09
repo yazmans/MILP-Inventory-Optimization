@@ -230,26 +230,50 @@ function registerIPC() {
 
   // Run MILP optimizer
   ipcMain.handle('milp:run', (e, payload) => {
-    return new Promise((resolve) => {
-      const script = path.join(__dirname, 'milp_solver.py');
-      const child  = spawn('python3', [script]);
+    const script = path.join(__dirname, 'milp_solver.py');
+
+    // Candidate Python launchers, in order of preference. On Windows the
+    // user-installed `python` (e.g. C:\Python313) is tried first because it is
+    // where `pip install pulp` typically lands; `py -3` and `python3` often
+    // resolve to the Microsoft Store shim, which has no user-installed packages
+    // and would report PuLP missing, so they come after as fallbacks.
+    const candidates = process.platform === 'win32'
+      ? [['python', [script]], ['py', ['-3', script]], ['python3', [script]]]
+      : [['python3', [script]], ['python', [script]]];
+
+    // Try each launcher until one produces parseable JSON. A launcher that
+    // can't even start (ENOENT) or whose solver reports PuLP missing is skipped
+    // so we fall through to the next interpreter.
+    const tryRun = (idx) => new Promise((resolve) => {
+      if (idx >= candidates.length) {
+        resolve({ ok: false, error: 'No se encontró un Python con PuLP instalado. Instala PuLP con: py -3 -m pip install pulp' });
+        return;
+      }
+      const [cmd, args] = candidates[idx];
+      const child = spawn(cmd, args);
       let stdout = '';
       let stderr = '';
       child.stdout.on('data', d => { stdout += d; });
       child.stderr.on('data', d => { stderr += d; });
-      child.on('close', code => {
-        try {
-          resolve(JSON.parse(stdout));
-        } catch (_) {
-          resolve({ ok: false, error: stderr || `El proceso terminó con código ${code}` });
+      child.on('close', async () => {
+        let parsed = null;
+        try { parsed = JSON.parse(stdout); } catch (_) { parsed = null; }
+        // No JSON, or the solver reported PuLP missing → try the next launcher.
+        if (!parsed || (parsed.ok === false && /PuLP no está instalado/i.test(parsed.error || ''))) {
+          resolve(await tryRun(idx + 1));
+          return;
         }
+        resolve(parsed);
       });
-      child.on('error', err => {
-        resolve({ ok: false, error: `No se pudo iniciar Python: ${err.message}` });
+      child.on('error', async () => {
+        // Launcher not found / failed to start → try the next one.
+        resolve(await tryRun(idx + 1));
       });
       child.stdin.write(JSON.stringify(payload));
       child.stdin.end();
     });
+
+    return tryRun(0);
   });
 }
 
